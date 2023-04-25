@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>ChatBot conversation</title>
+    <style>
+        .mainPart {
+            width: auto;
+            height: 500px;
+            padding: 20px;
+            overflow: scroll;
+        }
+        #confirmButton {
+            width: 150px;
+            display: inline-block;
+            padding: 10px 40px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+        #confirmButton:hover {
+            background-color: #3e8e41
+        }
+        #confirmButton:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        input {
+            width: 30%;
+            margin-top: 20 px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="mainPart">
+    <div id="mainText"></div>
+</div>
+
+<input type="text" id="userInput" placeholder="Wpisz wiadomość">
+<button id="confirmButton">Wyślij</button>
+
+<script>
+        const button = document.getElementById('confirmButton');
+        const userInput = document.getElementById('userInput');
+        const mainText = document.getElementById('mainText');
+        mainText.innerHTML += '<b>Bot: </b>Cześć, jak tam zajęcia z JS? <br>';
+
+        function userMessage() {
+            const message = userInput.value;
+            mainText.innerHTML += '<b>Użytkownik: </b>' + message + '<br>';
+           setTimeout(() => getBotAnswer(message), 1500);
+        }
+
+        function getBotAnswer(message) {
+            let answer;
+            if (message === 'Cześć' || message === 'Hej') {
+                answer = 'Cześć!';
+            } else if (message === 'Do zobaczenia' || message === 'Papa') {
+                answer = 'Dziękuję, że wpadłeś. Do zobaczenia!';
+            } else if (message === 'Cudownie!') {
+                answer = 'Dobrze to słyszeć!';
+            } else {
+                answer = 'Nie rozumiem. Możesz to rozjaśnić?';
+            }
+            mainText.innerHTML += '<b>Bot: </b>' + answer + '<br>';
+        }
+
+        button.addEventListener('click', userMessage);
+        userInput.addEventListener('keypress', function(event) {
+            if (event.keyCode === 13) {
+                userMessage();
+            }
+        });
+
+</script>
+</body>
+</html>
