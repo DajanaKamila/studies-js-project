@@ -57,6 +57,7 @@
         function userMessage() {
             const message = userInput.value;
             mainText.innerHTML += '<b>Użytkownik: </b>' + message + '<br>';
+            userInput = '';
            setTimeout(() => getBotAnswer(message), 1500);
         }
 
