@@ -1,5 +1,5 @@
-# js-project
-
+JS Project - simple chatbot
+=======
 It's one of my small projects for Software Development studies. My goal was to create a really simple chatbot.
 
 # Requirements I fulfilled:
